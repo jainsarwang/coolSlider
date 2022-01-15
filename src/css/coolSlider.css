@@ -26,10 +26,10 @@ html, body
 	aspect-ratio: auto;
 }
 .coolSlider .sliding {
-    overflow: hidden;
-    overflow-x: auto;
-    display: flex;
-    aspect-ratio: inherit;
+	overflow: hidden;
+	overflow-x: auto;
+	display: flex;
+	aspect-ratio: inherit;
 }
 .coolSlider .sliding::-webkit-scrollbar
 {
@@ -37,9 +37,9 @@ html, body
 }
 .coolSlider .sliding *
 {
-    min-width: 100%;
-    padding: 0;
-    margin: 0;
+	min-width: 100%;
+	padding: 0;
+	margin: 0;
 }
 .coolSlider .controls
 {
