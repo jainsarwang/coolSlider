@@ -100,8 +100,8 @@ html, body
 }
 .coolSlider .pageCount.bar i{
 	width: 20px;
-	height: 2px;
-	margin: 4px 2.5px 0;
+	height: 4px;
+	margin: 3px 2.5px 0;
 	background:  var(--coolSliderPagination);
 	border-radius: 0;
 }
