@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="../src/css/coolSlider.min.css">
+		<title>Example 3 | Cool Slider</title>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div class="container">
+				<div class="coolSlider" id="coolSlider3">
+					<img src="files/img1.png">
+					<img src="files/img2.png">
+					<img src="files/img3.png">
+					<div style="
+						width:100%;
+						background: linear-gradient(#e74545,#ffffffd9);
+						color: #4f504ffc;
+						display: grid;
+						place-content: center;
+					">
+						<h1>HTML Content Slide</h1>
+					</div>
+					<video autoplay muted loop>
+						<source src="files/vid.mp4" type="video/mp4">
+					</video>
+				</div>
+			</div>
+			</div>
+		
+		<script type="text/javascript" src="../src/js/coolSlider.min.js"></script>
+		<script type="text/javascript">
+			new CoolSlider({
+				slider:document.querySelector('#coolSlider3.coolSlider'),
+				maxWidth:'80%',
+				paginationType: 2,
+				paginationColorCode: '#fff',
+				paginationActiveColorCode: '#218aff'
+			});
+		</script>
+	</body>
+</html>
+
