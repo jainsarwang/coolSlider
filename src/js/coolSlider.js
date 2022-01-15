@@ -42,12 +42,13 @@ class CoolSlider{
 		if(isKeyControlled){
 			// move with arrow key allowed
 			document.addEventListener('keydown', (e) => {
-				e.preventDefault();
 				if(e.keyCode == 37){
 					//left arrow key PRESSED
+					e.preventDefault();
 					this.prev();
 				}else if(e.keyCode == 39){
 					//right arrow key PRESSED
+					e.preventDefault();
 					this.next();
 				}
 			});
