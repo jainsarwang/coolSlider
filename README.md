@@ -37,13 +37,13 @@ maxWidth : width | 100vw (default)
 ```
 
 ### controls
-Wheather to show `Previous` or `Next` Button or Not.
+Whether to show `Previous` or `Next` Button or Not.
 ```
 controls : true (default) | false
 ```
 
 ### isKeyControlled
-Wheather you want to navigate to slides with `Left Arrow` or `Right Arrow` key or not.
+Whether you want to navigate to slides with <kbd>Left Arrow</kbd> or <kbd>Right Arrow</kbd> key or not.
 ```
 iskeyControlled : true (default) | false
 ```
