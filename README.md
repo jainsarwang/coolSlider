@@ -19,8 +19,9 @@ new CoolSlider({
     autoSlide                   :       'time in which slide auto slides',
     aspectRatio                 :       'aspect ratio of slider and its element',
     paginationActiveColorCode   :       'Color of Pagination indicator corresponds to slides',
-    paginationColorCode         :       'ackground color of pagination indicator',
-    paginationType              :       'type of pagination you  want'
+    paginationColorCode         :       'background color of pagination indicator',
+    paginationType              :       'type of pagination you  want',
+    infinite			:	'setup infinite scroll to the slider'
 });
 ```
 
@@ -76,6 +77,12 @@ Use to set `Background color` of the pagination indicator corresponding to `acti
 `Type` of pagination indicator you want for your Slider
 ```
 0 (default) 'For Disc' | 1 'For Circle' | 2 'For Horizontal Bar'
+```
+
+### infinite
+Whether you want your Slider to scroll infinitely or not
+```
+'true' or 'false'(default)
 ```
 
 ## Example
@@ -153,7 +160,8 @@ Fully Custom slider
 		maxWidth:'80%',
 		paginationType: 2,
 		paginationColorCode: '#fff',
-		paginationActiveColorCode: '#218aff'
+		paginationActiveColorCode: '#218aff',
+		infinite: true
 	});
 </script>
 ```
