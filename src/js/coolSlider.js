@@ -9,7 +9,8 @@ class CoolSlider{
 		aspectRatio,
 		paginationActiveColorCode,
 		paginationColorCode,
-		paginationType
+		paginationType,
+		infinite
 	}){
 
 		maxWidth = (typeof maxWidth == 'undefined') ? true : maxWidth;
@@ -19,6 +20,7 @@ class CoolSlider{
 		paginationActiveColorCode = (typeof paginationActiveColorCode == 'undefined') ? '#fe51ad' : paginationActiveColorCode;
 		paginationColorCode = (typeof paginationColorCode == 'undefined') ? '#aaaaaa' : paginationColorCode;
 		this.controls = (typeof controls == 'undefined') ? true : controls;
+		this.infinite = (typeof infinite == 'undefined') ? false : infinite;
 		
 		if(typeof slider != 'object') {
 			throw new Error("CoolSlider Class required 1 parameter of type HTML Element");
@@ -61,10 +63,10 @@ class CoolSlider{
 
 		//setting maxwidth of slider
 		slider.style.setProperty('max-width',maxWidth);
-		slider.style.setProperty('aspect-ratio',aspectRatio);
-		document.documentElement.style.setProperty('--coolSliderMaxWidth',maxWidth);
-		document.documentElement.style.setProperty('--coolSliderActivePagination',paginationActiveColorCode);
-		document.documentElement.style.setProperty('--coolSliderPagination',paginationColorCode);
+		slider.style.setProperty('--aspectRatio',aspectRatio);
+		slider.style.setProperty('--coolSliderMaxWidth',maxWidth);
+		slider.style.setProperty('--coolSliderActivePagination',paginationActiveColorCode);
+		slider.style.setProperty('--coolSliderPagination',paginationColorCode);
 		
 	}
 
@@ -72,9 +74,9 @@ class CoolSlider{
 		let obj = this;
 		setInterval(function(){
 			if(obj.currentSlide == (obj.maxSlides-1)){
-				obj.changeImage(0);
+				obj.changeSlide(0);
 			}else{
-				obj.changeImage(obj.currentSlide+1);    
+				obj.changeSlide(obj.currentSlide+1);    
 			}
 		},timeInMS);
 	}
@@ -133,6 +135,8 @@ class CoolSlider{
 	}
 
 	toggleControl(activeSlideIndex){
+		if(this.infinite == true) return;
+
 		let prev = this.slider.querySelector('.prev'),
 			next = this.slider.querySelector('.next');
 
@@ -154,24 +158,26 @@ class CoolSlider{
 
 	prev() {
 		if(--this.currentSlide < 0){
-			this.currentSlide = 0;
+			if(!this.infinite) this.currentSlide = 0;
+			else this.currentSlide = this.maxSlides - 1;
 		}
 
-		this.changeImage(this.currentSlide);
+		this.changeSlide(this.currentSlide);
 	}
 
 	next() {
 		if(this.maxSlides <= ++this.currentSlide) {
-			this.currentSlide = this.maxSlides - 1;
+			if(!this.infinite) this.currentSlide = this.maxSlides - 1;
+			else this.currentSlide = 0;
 		}
-		this.changeImage(this.currentSlide);
+		this.changeSlide(this.currentSlide);
 	}
 
-	changeImage(i){
+	changeSlide(i){
 
-		var images = this.slider.querySelectorAll("img");
+		var images = this.slider.querySelector("*");
 
-		this.slider.querySelector('.sliding').scrollLeft = i * images[0].getClientRects()[0].width;
+		this.slider.querySelector('.sliding').scrollLeft = i * images.getClientRects()[0].width;
 
 		this.slider.querySelector('.pageCount i.active').classList.remove('active');
 		this.slider.querySelectorAll('.pageCount i')[i].classList.add('active');
@@ -194,7 +200,7 @@ class CoolSlider{
 				});
 
 				e.classList.add('active');
-				this.changeImage(ind);  // changing image 
+				this.changeSlide(ind);  // changing image 
 			}	
 		});
 	}
