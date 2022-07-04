@@ -23,23 +23,26 @@ html, body
 	box-shadow: 0 0 13px 1px #aaa;
 	position: relative;
 	z-index: 2;
-	aspect-ratio: auto;
+	aspect-ratio: var(--aspectRatio);
 }
 .coolSlider .sliding {
 	overflow: hidden;
 	overflow-x: auto;
 	display: flex;
 	aspect-ratio: inherit;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 }
 .coolSlider .sliding::-webkit-scrollbar
 {
 	display: none;
 }
-.coolSlider .sliding *
+.coolSlider .sliding > *
 {
 	min-width: 100%;
 	padding: 0;
 	margin: 0;
+	object-fit: cover;
 }
 .coolSlider .controls
 {
@@ -91,6 +94,7 @@ html, body
 }
 .coolSlider .pageCount.disc i{
 	background: var(--coolSliderPagination);
+	box-shadow: inset 0 0 1.5px #262626;
 }
 .coolSlider .pageCount.circle i{
 	width: 6px;
@@ -111,4 +115,9 @@ html, body
 }
 .coolSlider .pageCount.circle i.active{
 	box-shadow: 0 0 0 2px var(--coolSliderActivePagination);
+}
+@media screen and (max-width: 425px){
+	.coolSlider{
+		aspect-ratio: calc(var(--aspectRatio) / 2);
+	}
 }
