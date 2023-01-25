@@ -43,7 +43,13 @@ class CoolSlider{
 
 		if(isKeyControlled){
 			// move with arrow key allowed
-			document.addEventListener('keydown', (e) => {
+			let sli = this.slider;
+
+			this.slider.setAttribute('tabindex','0');
+			this.slider.addEventListener('click', function(){
+				sli.focus();
+			});
+			this.slider.addEventListener('keydown', (e) => {
 				if(e.keyCode == 37){
 					//left arrow key PRESSED
 					e.preventDefault();
